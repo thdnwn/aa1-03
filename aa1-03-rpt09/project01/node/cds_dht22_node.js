@@ -27,31 +27,27 @@ sp.on("open", () => {
 var dStr = "";
 var readData = "";
 var temp = "";
-var humi = "";
 var lux = "";
 var mdata = [];
 var firstcommaidx = 0;
-
+var name = "";
 parser.on("data", (data) => {
   // call back when data is received
   readData = data.toString();
   firstcommaidx = readData.indexOf(",");
-  secondcommaidx = readData.indexOf(",", firstcommaidx + 1);
-  if (readData.lastIndexOf(",") > firstcommaidx && firstcommaidx > 0) {
-    temp = readData.substring(firstcommaidx + 1, 
-      readData.indexof(",", firstcommaidx + 1));
-    humi = readData.substring(
-      secondcommaidx + 1,
-      readData.indexof(",", secondcommaidx + 1));
-    lux = readData.substring(readData.indexof("," + 1));
+  second = readData.indexOf(",",firstcommaidx + 1);
+  if (readData.lastIndexOf(",") > firstcommaidx && firstcommaidx > 0 ){
+    name = readData.substring(0, firstcommaidx)
+    temp = readData.substring(firstcommaidx+1,readData.indexOf(",",firstcommaidx + 1));
+    humi = readData.substring(second + 1, readData.indexOf(",", second + 1));
+    lux = readData.substring(readData.lastIndexOf(",") + 1);
     readData = "";
-
     dStr = getDateString();
     mdata[0] = dStr; //date
     mdata[1] = temp; //data
-    mdata[2] = humi; //data
-    mdata[3] = lux; //data
-    console.log("AA0313," + mdata);
+    mdata[2] = humi;
+    mdata[3] = lux;
+    console.log("AA1303," + mdata);
     io.sockets.emit("message", mdata); // send data to all clients
   } else {
     console.log(readData);

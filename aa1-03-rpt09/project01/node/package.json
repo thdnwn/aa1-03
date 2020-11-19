@@ -1,12 +1,17 @@
 {
-  "name": "cds_dht22",
+  "name": "cds_tmp36",
   "version": "1.0.0",
-  "description": "cds-dht22-node project",
-  "main": "cds_dht22_node.js",
+  "description": "cds-tmp36-node-project",
+  "main": "cds_tmp36_node.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "aa0313",
+  "keywords": [
+    "cds",
+    "tmp36",
+    "node"
+  ],
+  "author": "aa00",
   "license": "MIT",
   "dependencies": {
     "serialport": "^9.0.1",
